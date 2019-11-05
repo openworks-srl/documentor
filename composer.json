@@ -1,0 +1,21 @@
+{
+    "name": "openworks/documentor",
+    "description": "Generatore di documenti a partire da template twig",
+    "type": "library",
+    "require": {
+        "twig/twig": "^2.12",
+        "phpoffice/phpword": "^0.17.0",
+        "phpoffice/phpspreadsheet": "^1.9",
+        "mikehaertl/phpwkhtmltopdf": "^2.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.4"
+    },
+    "license": "Propietary",
+    "authors": [
+        {
+            "name": "Mattia Bonzi",
+            "email": "mattiabonzi@openworks.it"
+        }
+    ]
+}
