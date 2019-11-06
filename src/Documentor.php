@@ -12,15 +12,15 @@ use App\generator\InteractiveDocumentGenerator;
 class Documentor
 {
 
-    public function generate(String $template, String $format, Array $data = [], Array $options = [], Bool $debug = false) : Document
+    public function generate($template, $format, $data = [], $options = [], $debug = false)
     {
         $htmlPage = (new TwigEngine())->render($template, $data);
-        return GeneratorFactory::getGeneraotr($debug ? "debug" : $format,  (String) Utils::getOptions($options, "mod", ""))->generate($htmlPage, $format, Utils::getOptions($options, "global", []));
+        return GeneratorFactory::getGeneraotr($debug ? "debug" : $format, Utils::getOptions($options, "mod", ""))->generate($htmlPage, $format, Utils::getOptions($options, "global", []));
     }
 
-    public function getInteractiveGenerator(String $format, String $modifier = "_interactive") : InteractiveDocumentGenerator
+    public function getInteractiveGenerator($format, $modifier = "_interactive")
     {
-        return GeneratorFactory::getGeneraotr($format, (String) $modifier);
+        return GeneratorFactory::getGeneraotr($format, $modifier);
     }
 }
 

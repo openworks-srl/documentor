@@ -26,10 +26,7 @@ final class ExcelTest extends TestCase
         $doc = (new Documentor())->generate("test.excel.twig", "ods", [
             "foo" => $foo
         ]);
-        
-        
         $this->assertFileExists($doc->getFile());
-        
     }
     
     

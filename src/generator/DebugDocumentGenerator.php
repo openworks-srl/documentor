@@ -7,7 +7,7 @@ use App\Constant;
 
 class DebugDocumentGenerator extends DocumentGenerator
 {
-    public function generate(String $template, String $format, array $options = []): Document
+    public function generate($template, $format, $options = [])
     {
         $doc = $this->bunldeDocument("application/html");
         $handle = fopen($doc->getFile(), "w");

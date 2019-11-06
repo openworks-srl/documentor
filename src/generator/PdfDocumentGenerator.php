@@ -7,7 +7,7 @@ use App\Constant;
 
 class PdfDocumentGenerator extends DocumentGenerator
 {
-    public function generate(String $template, String $format, array $options = []): Document
+    public function generate( $template,  $format, $options = [])
     {
         $pdf = new Pdf($options);
         $pdf->addPage($template);

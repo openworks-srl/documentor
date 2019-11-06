@@ -11,7 +11,7 @@ class GeneratorFactory
 
     const classNameSpace = "App\\generator\\";
 
-    public static function getGeneraotr(String $format, String $modifier = null): AbstractDocumentGenerator
+    public static function getGeneraotr( $format,  $modifier = null)
     {
         $class = null;
         switch ($format) {

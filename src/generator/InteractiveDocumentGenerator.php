@@ -8,6 +8,6 @@ abstract class InteractiveDocumentGenerator extends AbstractDocumentGenerator
     
     public abstract function getEditableObject(...$params);
     
-    public abstract function save($object, ...$params) : Document;
+    public abstract function save($object, ...$params);
 }
 

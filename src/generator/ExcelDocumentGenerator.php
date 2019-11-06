@@ -10,7 +10,7 @@ use Exception;
 class ExcelDocumentGenerator extends DocumentGenerator
 {
 
-    public function generate(String $template, String $format, array $options = []): Document
+    public function generate($template, $format, $options = [])
     {
         $spreadSheet = (new HtmlReader())->loadFromString($template);
         $doc = $this->bunldeDocument();

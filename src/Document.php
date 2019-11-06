@@ -12,7 +12,7 @@ class Document
     private $lenght;
     
     
-    public function saveAs(String $path ,Bool $override) {
+    public function saveAs( $path , $override) {
         if ($this->file != null && file_exists($this->file)) {
             if ($override || !file_exists($path)) {
                 copy($this->file, $path);

@@ -9,7 +9,7 @@ use Exception;
 class PhpSpreadSheetHtmlStringReaderPolyFill extends Html
 {
     
-    public function loadFromString($content): Spreadsheet
+    public function loadFromString($content)
     {
         //    Create a new DOM object
         $dom = new DOMDocument();
@@ -30,7 +30,7 @@ class PhpSpreadSheetHtmlStringReaderPolyFill extends Html
      *
      * @return Spreadsheet
      */
-    private function loadDocument(DOMDocument $document, Spreadsheet $spreadsheet): Spreadsheet
+    private function loadDocument(DOMDocument $document, Spreadsheet $spreadsheet)
     {
         while ($spreadsheet->getSheetCount() <= $this->sheetIndex) {
             $spreadsheet->createSheet();

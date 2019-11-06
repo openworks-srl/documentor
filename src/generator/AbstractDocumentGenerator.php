@@ -10,7 +10,7 @@ abstract class AbstractDocumentGenerator
     protected $format;
     
     
-    public function __construct(String $format) {
+    public function __construct($format) {
         $this->format = $format;
     }
     
@@ -20,7 +20,7 @@ abstract class AbstractDocumentGenerator
         return "doc_" . uniqid();
     }
     
-    protected function bunldeDocument(String $contentType = "application/octet-stream", int $lenght = null)
+    protected function bunldeDocument($contentType = "application/octet-stream", $lenght = null)
     {
         $name = $this->getTmpName();
         return (new Document())->setName($name)

@@ -19,7 +19,7 @@ class TwigEngine
         $this->twig = new Environment($loader);
     }
     
-    public function render(String $template,  $data = []) : String {
+    public function render( $template,  $data = [])  {
         return $this->twig->render($template, $data);
     }
     

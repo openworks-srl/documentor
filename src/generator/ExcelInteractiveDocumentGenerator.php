@@ -26,7 +26,7 @@ class ExcelInteractiveDocumentGenerator extends InteractiveDocumentGenerator
        return new Spreadsheet();
     }
     
-    public function save($object, ...$params) : Document
+    public function save($object, ...$params)
     {
         if (!($object instanceof Spreadsheet)) {
             throw new \Exception("L'oggeto passato non e' una istanza di Spreadsheet");
