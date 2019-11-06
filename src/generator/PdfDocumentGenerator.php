@@ -5,13 +5,13 @@ use App\Document;
 use mikehaertl\wkhtmlto\Pdf;
 use App\Constant;
 
-class PdfDocumentGenerator extends IDocumentGenerator
+class PdfDocumentGenerator extends DocumentGenerator
 {
     public function generate(String $template, String $format, array $options = []): Document
     {
         $pdf = new Pdf($options);
         $pdf->addPage($template);
-        $doc = $this->bunldeDocument("pdf", "application/pdf");
+        $doc = $this->bunldeDocument("application/pdf");
         if (PHP_OS == "WINNT") {
             $pdf->binary = Constant::WIN_WK_BINARY;
         } else {
