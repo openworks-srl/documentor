@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 final class ExcelTest extends TestCase
 {
     
-    public function testGenerateSimpleDocumentFromHtml() {
+    public function testGenerateDocument() {
         $foo = [
             [
                 'name' => 'Alice',
@@ -44,7 +44,6 @@ final class ExcelTest extends TestCase
             [
                 'name' => 'Steve',
                 'surname' => 'Jobs'
-                
             ]
         ];
        

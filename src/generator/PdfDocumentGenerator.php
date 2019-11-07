@@ -5,9 +5,9 @@ use App\Document;
 use mikehaertl\wkhtmlto\Pdf;
 use App\Constant;
 
-class PdfDocumentGenerator extends DocumentGenerator
+class PdfDocumentGenerator extends DefaultDocumentGenerator
 {
-    public function generate( $template,  $format, $options = [])
+    public function generate( $template,  $options = [])
     {
         $pdf = new Pdf($options);
         $pdf->addPage($template);

@@ -19,7 +19,7 @@ final class PdfTest extends TestCase
                 'name' => 'Eve'
             ]
         ];
-        var_dump((new Documentor())->generate("test.pdf.twig", "pdf", [
+       $doc = (new Documentor())->generate("test.pdf.twig", "pdf", [
             "foo" => $foo
         ], [
             'global' => [
@@ -28,7 +28,9 @@ final class PdfTest extends TestCase
                 'margin-bottom' => 0,
                 'margin-left' => 0
             ]
-        ]));
+        ]);
+       
+       $this->assertFileExists($doc->getFile());
     }
     
     

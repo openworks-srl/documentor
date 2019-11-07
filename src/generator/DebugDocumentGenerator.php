@@ -5,9 +5,14 @@ use App\Document;
 use mikehaertl\wkhtmlto\Pdf;
 use App\Constant;
 
-class DebugDocumentGenerator extends DocumentGenerator
+
+/**
+ * @author Mattia Bonzi (mattiabonzi.it)
+ *
+ */
+class DebugDocumentGenerator extends DefaultDocumentGenerator
 {
-    public function generate($template, $format, $options = [])
+    public function generate($template, $options = [])
     {
         $doc = $this->bunldeDocument("application/html");
         $handle = fopen($doc->getFile(), "w");

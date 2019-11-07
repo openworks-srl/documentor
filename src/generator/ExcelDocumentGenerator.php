@@ -7,14 +7,14 @@ use App\PolyFill\PhpSpreadSheetHtmlStringReaderPolyFill as HtmlReader;
 use DOMDocument;
 use Exception;
 
-class ExcelDocumentGenerator extends DocumentGenerator
+class ExcelDocumentGenerator extends DefaultDocumentGenerator
 {
 
-    public function generate($template, $format, $options = [])
+    public function generate($template, $options = [])
     {
         $spreadSheet = (new HtmlReader())->loadFromString($template);
         $doc = $this->bunldeDocument();
-        IOFactory::createWriter($spreadSheet, ucfirst($format))->save($doc->getFile());
+        IOFactory::createWriter($spreadSheet, ucfirst($this->format))->save($doc->getFile());
         return $doc;
     }
 }
