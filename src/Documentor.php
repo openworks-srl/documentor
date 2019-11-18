@@ -5,21 +5,28 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\TwigEngine;
 use App\Utils;
+use App\Config\Settings;
 
 class Documentor
 {
 
-    public function generate($input, $format, $data = [], $options = [], $debug = false)
+    public function __construct($pathConfig)
+    {
+        Settings::loadConfig($pathConfig);
+    }
+
+    public function generate($input, $format, $data = [], $options = [])
     {
         if (is_string($input)) {
             $input = (new TwigEngine())->render($input, $data);
         }
-        return GeneratorFactory::getGeneraotr($debug ? "debug" : $format, Utils::getOptions($options, "mod", ""))->generate($input, Utils::getOptions($options, "global", []));
+        $format = Utils::getOptions($options, "debug", false) ? "debug" : $format;
+        return GeneratorFactory::getGenerator($format, Utils::getOptions($options, "mod", ""))->generate($input, Utils::getOptions($options, "doc", []));
     }
 
     public function getInteractiveGenerator($format, $modifier = "_interactive")
     {
-        return GeneratorFactory::getGeneraotr($format, $modifier);
+        return GeneratorFactory::getGenerator($format, $modifier);
     }
 }
 

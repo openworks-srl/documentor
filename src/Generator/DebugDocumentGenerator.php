@@ -1,9 +1,9 @@
 <?php
-namespace App\generator;
+namespace App\Generator;
 
 use App\Document;
 use mikehaertl\wkhtmlto\Pdf;
-use App\Constant;
+
 
 
 /**

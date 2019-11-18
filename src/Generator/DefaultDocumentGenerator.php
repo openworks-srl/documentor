@@ -1,8 +1,8 @@
 <?php
-namespace App\generator;
+namespace App\Generator;
 
 use App\Document;
-use App\Constant;
+
 
 abstract class DefaultDocumentGenerator extends AbstractDocumentGenerator
 {

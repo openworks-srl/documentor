@@ -1,16 +1,16 @@
 <?php
 namespace App;
 
-
+use Exception;
 
 class GeneratorFactory
 {
 
     const classPostfix = "DocumentGenerator";
 
-    const classNameSpace = "App\\generator\\";
+    const classNameSpace = "App\Generator\\";
 
-    public static function getGeneraotr( $format,  $modifier = null)
+    public static function getGenerator( $format,  $modifier = null)
     {
         $class = null;
         switch ($format) {
@@ -39,9 +39,14 @@ class GeneratorFactory
                 throw new \InvalidArgumentException("La tipologia di documento speicifcata non puo essere generata");
                 break;
         }
-
-        $class = self::classNameSpace . ucfirst($class) . ($modifier != null ? ucfirst(substr($modifier, 1)) : "") . self::classPostfix;
-        return new $class($format);
+        $modifier = $modifier != null ? substr($modifier, 0, 1) == "_" ? ucfirst(substr($modifier, 1)) : ucfirst($modifier) : "";
+        $class = self::classNameSpace . ucfirst($class) . $modifier . self::classPostfix;
+        try {
+            return new $class($format);
+        } catch (Exception $e) {
+            throw new \InvalidArgumentException("La tipologia di documento speicifcata non puo essere generata");
+        }
+       
     }
 }
 

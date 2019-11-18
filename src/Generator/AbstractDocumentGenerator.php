@@ -1,8 +1,9 @@
 <?php
-namespace App\generator;
+namespace App\Generator;
 
-use App\Constant;
+
 use App\Document;
+use App\Config\Settings;
 
 /**
  * Classe "generatore" base, viene estesa da tutti i generatori
@@ -51,7 +52,7 @@ abstract class AbstractDocumentGenerator
     {
         $name = $this->getTmpName();
         return (new Document())->setName($name)
-        ->setFile(Constant::TMP_DIR . "/" . $name . ".$this->format")
+        ->setFile(Settings::get("TMP_DIR") . "/" . $name . ".$this->format")
         ->setContentType($contentType)
         ->setFormat($this->format)
         ->setLenght($lenght);

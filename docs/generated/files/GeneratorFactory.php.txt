@@ -10,7 +10,7 @@ class GeneratorFactory
 
     const classNameSpace = "App\\generator\\";
 
-    public static function getGeneraotr( $format,  $modifier = null)
+    public static function getGenerator( $format,  $modifier = null)
     {
         $class = null;
         switch ($format) {

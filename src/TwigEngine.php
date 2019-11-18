@@ -2,6 +2,7 @@
 namespace App;
 
 
+use App\Config\Settings;
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
 
@@ -15,7 +16,7 @@ class TwigEngine
     
     
     public function __construct() {
-        $loader = new FilesystemLoader(Constant::TEMPLATE_DIR);
+        $loader = new FilesystemLoader(Settings::get("TEMPLATE_DIR"));
         $this->twig = new Environment($loader);
     }
     

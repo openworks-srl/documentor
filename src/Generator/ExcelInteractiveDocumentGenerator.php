@@ -1,5 +1,5 @@
 <?php
-namespace App\generator;
+namespace App\Generator;
 
 use App\Document;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -18,7 +18,7 @@ class ExcelInteractiveDocumentGenerator extends InteractiveDocumentGenerator
                 throw new Exception("Il file $file non puo essere trovato");
             }
             try {
-               return \PhpOffice\PhpSpreadsheet\IOFactory::load('template.xlsx');
+                return \PhpOffice\PhpSpreadsheet\IOFactory::load($file);
             } catch (Exception $e) {
                 throw new Exception("Il file $file non e' leggibile oppure e' danneggiato");
             }

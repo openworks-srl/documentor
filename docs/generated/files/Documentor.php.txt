@@ -13,12 +13,12 @@ class Documentor
     public function generate($template, $format, $data = [], $options = [], $debug = false)
     {
         $htmlPage = (new TwigEngine())->render($template, $data);
-        return GeneratorFactory::getGeneraotr($debug ? "debug" : $format, Utils::getOptions($options, "mod", ""))->generate($htmlPage, Utils::getOptions($options, "global", []));
+        return GeneratorFactory::getGenerator($debug ? "debug" : $format, Utils::getOptions($options, "mod", ""))->generate($htmlPage, Utils::getOptions($options, "global", []));
     }
 
     public function getInteractiveGenerator($format, $modifier = "_interactive")
     {
-        return GeneratorFactory::getGeneraotr($format, $modifier);
+        return GeneratorFactory::getGenerator($format, $modifier);
     }
 }
 

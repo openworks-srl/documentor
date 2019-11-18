@@ -1,5 +1,5 @@
 <?php
-namespace App\generator;
+namespace App\Generator;
 
 use App\Document;
 use PhpOffice\PhpSpreadsheet\IOFactory;
