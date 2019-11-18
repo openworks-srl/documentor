@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Twig Example</title>
+</head>
+<body>
+   <style>
+body {
+	background-color: powderblue;
+   height : 100% !important;
+}
+
+h1 {
+	color: blue;
+}
+
+p {
+	color: red;
+}
+</style>
+   <h1>This is a heading</h1>
+   <p>This is a paragraph.</p>
+   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget sem eget nunc gravida ornare a id justo. Sed a
+      tortor rhoncus, accumsan purus non, elementum ante. Fusce condimentum rhoncus diam a suscipit. Morbi porta nisl vel
+      facilisis feugiat. Donec accumsan quam id magna feugiat, sed dignissim turpis rutrum. Pellentesque nisl nisi, blandit quis
+      nunc ac, cursus pellentesque tellus. Mauris nibh neque, sollicitudin quis aliquam et, ultrices ac quam. Sed a eros non odio
+      aliquet faucibus. Sed auctor sem nec sapien vehicula commodo. Mauris eleifend faucibus purus eu molestie. Suspendisse quis
+      velit vitae quam consequat pulvinar a quis augue. Suspendisse tincidunt velit suscipit leo tristique varius. Fusce et justo
+      eget ex auctor ornare ut sit amet felis. Quisque eu tempor est. Pellentesque ultricies convallis nibh, quis porttitor urna
+      cursus at. Donec et tristique urna, ut consequat nibh. Donec finibus dolor enim, ut finibus augue malesuada quis. Vivamus
+      hendrerit egestas dolor, quis ultricies libero. Suspendisse vulputate accumsan facilisis. Aliquam nibh urna, mattis quis
+      faucibus in, scelerisque in mauris. Suspendisse at tincidunt elit. Phasellus eu pellentesque diam, sed viverra velit.</p>
+   <ul>{% for item in foo %}
+   
+      <li>{{ item.name }}</li>
+      {% endfor %}
+   </ul>
+   <img class="resize" src="https://picsum.photos/900/450" style="width: 100%">
+</body>
+</html>

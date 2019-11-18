@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Twig Example</title>
+</head>
+<body>
+   
+   
+<table>
+    <tr>
+        <td>id</td>
+        <td>username</td>
+    </tr>
+    {% for item in foo %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.surname }}</td>
+        </tr>
+    {% endfor %}
+</table>      
+
+
+</body>
+</html>

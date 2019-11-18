@@ -3,6 +3,5 @@
 /.settings
 /.project
 /.buildpath
-!/tmp/tmpl
-/tmp/*
+
 
