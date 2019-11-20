@@ -4,7 +4,7 @@
  *
  * (c) Openworks srl <www.openworks.it>
  *
- * For the full copyright and license information, please view the LICENSE
+ * For the full license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
@@ -15,7 +15,7 @@ namespace App\Generator;
 use App\Utils;
 
 /**
- *
+ * Generatore utilizzato per eseguire il debug durante la generazione
  * @author Mattia Bonzi (mattiabonzi.it)
  *        
  */

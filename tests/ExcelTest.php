@@ -4,7 +4,7 @@
  *
  * (c) Openworks srl <www.openworks.it>
  *
- * For the full copyright and license information, please view the LICENSE
+ * For the full license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
@@ -63,8 +63,8 @@ final class ExcelTest extends TestCase
             "column" => ["Nome", "Cognome", "Età"],
             "data" => [
                 ["Mattia", "Bonzi", "21"],
-                ["Davide", "manoli", 21],
-                ["Alessandro", "Cibelli", "35"]
+                ["Francesco", "Turro", 21],
+                ["Alessandro", "Cittarelli", "35"]
             ]
         ];
         $doc =  $this->documentor->generate($data, "xlsx", ["mod" => "array"]);
@@ -75,8 +75,8 @@ final class ExcelTest extends TestCase
     public function testgenerateFromArrayWithoutColoumn() {
         $data = [[
                 ["Nome" => "Mattia", "Cognome" => "Bonzi","Età" => "21"],
-                ["Nome" => "Davide", "Cognome" => "manoli","Età" => 21],
-                ["Nome" => "Alessandro", "Cognome" => "Cibelli","Età" => "35"]
+                ["Nome" => "Francesco", "Cognome" => "Turro","Età" => 21],
+                ["Nome" => "Alessandro", "Cognome" => "Cittarelli","Età" => "35"]
         ]];
         $doc =  $this->documentor->generate($data, "xlsx", ["mod" => "array"]);
         $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Excel_"."testgenerateFromArrayWithoutColoumn_".$doc->getName()));
@@ -92,8 +92,8 @@ final class ExcelTest extends TestCase
             "column" => ["Nome", "Cognome", "Età"],
             "data" => [
                 ["Mattia", "Bonzi", "21"],
-                ["Davide", "manoli", 21],
-                ["Alessandro", "Cibelli", "35"]
+                ["Francesco", "Turro", 21],
+                ["Alessandro", "Cittarelli", "35"]
             ]
         ];
         $doc =  $this->documentor->generate($data, "xlsx", $options);
@@ -106,8 +106,8 @@ final class ExcelTest extends TestCase
         $options = ["mod" => "array", "doc" => ["headerStartColumn" => "B", "headerStartRow" => 3, "dataStartColumn" => "B"]];
         $data = [[
             ["Nome" => "Mattia", "Cognome" => "Bonzi","Età" => "21"],
-            ["Nome" => "Davide", "Cognome" => "manoli","Età" => 21],
-            ["Nome" => "Alessandro", "Cognome" => "Cibelli","Età" => "35"]
+            ["Nome" => "Francesco", "Cognome" => "Turro","Età" => 21],
+            ["Nome" => "Alessandro", "Cognome" => "Cittarelli","Età" => "35"]
         ]];
         $doc =  $this->documentor->generate($data, "xlsx", $options);
         $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Excel_"."testgenerateFromArrayWithoutColoumnWithOffset_".$doc->getName()));
@@ -122,8 +122,8 @@ final class ExcelTest extends TestCase
             "column" => ["Nome", "Cognome", "Età"],
             "data" => [
                 ["Mattia", "Bonzi", "21"],
-                ["Davide", "manoli", 21],
-                ["Alessandro", "Cibelli", "35"]
+                ["Francesco", "Turro", 21],
+                ["Alessandro", "Cittarelli", "35"]
             ]
         ];
         $doc =  $this->documentor->generate($data, "xlsx", $options);

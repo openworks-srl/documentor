@@ -4,7 +4,7 @@
  *
  * (c) Openworks srl <www.openworks.it>
  *
- * For the full copyright and license information, please view the LICENSE
+ * For the full license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
@@ -15,6 +15,12 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use App\Config\Settings;
 use Exception;
 
+/**
+ * Classe principale, utilizzata come facade per la generazione dei documenti
+ * Unico entry point
+ * @author Mattia Bonzi (mattiabonzi.it)
+ *
+ */
 class Documentor
 {
 
