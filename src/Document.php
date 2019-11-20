@@ -1,4 +1,13 @@
 <?php
+/*
+ * This file is part of the openworks-srl/documentor package.
+ *
+ * (c) Openworks srl <www.openworks.it>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App;
 
 use function App\Document\cleanUp;
@@ -16,12 +25,20 @@ class Document
 
     private $lenght;
 
-    public function saveAs($path, $override)
+    public function saveAs($path, $name = null, $override = false)
     {
+        if ($name == null) {
+            $name = $this->name;
+        }
+        if (!file_exists($path)) {
+            throw new \Exception("Impossibile trovare il percorso di destinazione specificato");
+        }
+        $completePath = $path.$name.'.'.$this->format;
         if ($this->file != null && file_exists($this->file)) {
-            if ($override || ! file_exists($path)) {
-                copy($this->file, $path);
-                cleanUp();
+            if (($override && file_exists($completePath)) || !file_exists($completePath)) {
+                copy($this->file, $completePath);
+                $this->cleanUp();
+                return $path;
             } else {
                 throw new \Exception("Il file specificato $path esiste gia'");
             }
@@ -102,6 +119,10 @@ class Document
     {
         $this->lenght = $lenght;
         return $this;
+    }
+    
+    public function getFullName() {
+        return $this->name . "." . $this->format;
     }
 }
 

@@ -1,4 +1,13 @@
 <?php
+/*
+ * This file is part of the openworks-srl/documentor package.
+ *
+ * (c) Openworks srl <www.openworks.it>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Generator;
 
 use App\Utils;
@@ -16,7 +25,9 @@ class PdfWordTemplateDocumentGenerator extends DefaultDocumentGenerator
         $wordTemplateGenerator = new WordTemplateDocumentGenerator("docx");
         $pdfPrinter = new PdfPrintDocumentGenerator("pdf");
         $doc = $wordTemplateGenerator->generate($wordTemplateGenerator->mapInput($input));
-        return $pdfPrinter->generate($pdfPrinter->mapInput([$doc->getFile()]));
+        $pdf = $pdfPrinter->generate($pdfPrinter->mapInput([$doc->getFile()]));
+        unlink($doc->getFile());
+        return $pdf;
         
     }
     

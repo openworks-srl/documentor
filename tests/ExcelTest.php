@@ -1,4 +1,13 @@
 <?php
+/*
+ * This file is part of the openworks-srl/documentor package.
+ *
+ * (c) Openworks srl <www.openworks.it>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Test\test;
 
 use App\Documentor;
@@ -8,6 +17,8 @@ final class ExcelTest extends TestCase
 {
     
     private $documentor;
+    CONST TEST_OUT = "C:\Progetti\documentorTest\\";
+    
     
     public function __construct() {
         $this->documentor = new Documentor(__DIR__."/TestConfig.php");
@@ -26,13 +37,13 @@ final class ExcelTest extends TestCase
             [
                 'name' => 'Steve',
                 'surname' => 'Jobs'
-                
             ]
         ];
         $doc =  $this->documentor->generate(["test.excel.twig", [
             "foo" => $foo
         ]], "ods");
-        $this->assertFileExists($doc->getFile());
+        
+        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Excel_"."testGenerateDocument_".$doc->getName()));
     }
     
     
@@ -43,7 +54,7 @@ final class ExcelTest extends TestCase
         $sheet = $obj->getActiveSheet();
         $sheet->setCellValue('A1', 'Hello World !');
         $doc = $generator->save($obj);
-        $this->assertFileExists($doc->getFile());
+        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Excel_"."testGenerateManualBuildedDocument_".$doc->getName()));
     }
     
     
@@ -57,7 +68,7 @@ final class ExcelTest extends TestCase
             ]
         ];
         $doc =  $this->documentor->generate($data, "xlsx", ["mod" => "array"]);
-        $this->assertFileExists($doc->getFile());
+        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Excel_"."testgenerateFromArrayWithColoumn_".$doc->getName()));
     }
     
     
@@ -68,7 +79,8 @@ final class ExcelTest extends TestCase
                 ["Nome" => "Alessandro", "Cognome" => "Cibelli","Età" => "35"]
         ]];
         $doc =  $this->documentor->generate($data, "xlsx", ["mod" => "array"]);
-        $this->assertFileExists($doc->getFile());
+        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Excel_"."testgenerateFromArrayWithoutColoumn_".$doc->getName()));
+        
     }
     
     
@@ -85,7 +97,8 @@ final class ExcelTest extends TestCase
             ]
         ];
         $doc =  $this->documentor->generate($data, "xlsx", $options);
-        $this->assertFileExists($doc->getFile());
+        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Excel_"."testgenerateFromArrayWithColoumnWithOffset_".$doc->getName()));
+        
     }
     
     
@@ -97,13 +110,14 @@ final class ExcelTest extends TestCase
             ["Nome" => "Alessandro", "Cognome" => "Cibelli","Età" => "35"]
         ]];
         $doc =  $this->documentor->generate($data, "xlsx", $options);
-        $this->assertFileExists($doc->getFile());
+        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Excel_"."testgenerateFromArrayWithoutColoumnWithOffset_".$doc->getName()));
+        
     }
     
     
     
     public function testgenerateFromArrayWithColoumnWithTemplate() {
-        $options = ["mod" => "array", "doc" => ["template" => __DIR__ . "/../tmp/tmpl/templateTest.xlsx"]];
+        $options = ["mod" => "array", "doc" => ["template" => "templateTest.xlsx"]];
         $data = [
             "column" => ["Nome", "Cognome", "Età"],
             "data" => [
@@ -113,6 +127,7 @@ final class ExcelTest extends TestCase
             ]
         ];
         $doc =  $this->documentor->generate($data, "xlsx", $options);
-        $this->assertFileExists($doc->getFile());
+        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Excel_"."testgenerateFromArrayWithColoumnWithTemplate_".$doc->getName()));
+        
     }
 }

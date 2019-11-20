@@ -1,4 +1,13 @@
 <?php
+/*
+ * This file is part of the openworks-srl/documentor package.
+ *
+ * (c) Openworks srl <www.openworks.it>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Test\test;
 
 use PHPUnit\Framework\TestCase;
@@ -8,10 +17,11 @@ final class WordTest extends TestCase
 {
 
     private $documentor;
+    CONST TEST_OUT = "C:\Progetti\documentorTest\\";
 
     public function __construct()
     {
-        $this->documentor = new Documentor(__DIR__ . "/TestConfig.php");
+        $this->documentor = new Documentor(__DIR__."/TestConfig.php");
     }
 
     public function testGenerateSimpleDocument()
@@ -31,7 +41,7 @@ final class WordTest extends TestCase
             "foo" => $foo
         ]], "docx");
 
-        $this->assertFileExists($doc->getFile());
+        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Word_"."testGenerateSimpleDocument".$doc->getName()));
     }
 
     
@@ -71,7 +81,8 @@ final class WordTest extends TestCase
             ]
         ]);
 
-        $this->assertFileExists($doc->getFile());
+        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Word_"."testegistroPartecipazione".$doc->getName()));
+        
     }
 
     public function testManualGeneration()
@@ -84,7 +95,7 @@ final class WordTest extends TestCase
             'size' => 10
         ));
         $doc = $generator->save($word);
-        $this->assertFileExists($doc->getFile());
+        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Word_"."testManualGeneration".$doc->getName()));
     }
     
     
@@ -99,6 +110,6 @@ final class WordTest extends TestCase
         ];
         $doc = $this->documentor->generate(["cv.docx", $data], "docx", ["mod" => "template"]);
         
-        $this->assertFileExists($doc->getFile());
+        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Word_"."testGenerateFromDocTemplate".$doc->getName()));
     }
 }

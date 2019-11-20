@@ -1,4 +1,13 @@
 <?php
+/*
+ * This file is part of the openworks-srl/documentor package.
+ *
+ * (c) Openworks srl <www.openworks.it>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Config;
 
 final class Settings
@@ -15,7 +24,7 @@ final class Settings
 
     public static function loadConfig($path)
     {
-        static::$instance = new Settings(include $path);
+        static::$instance = new Settings($path != null ? include $path : []);
         static::$instance->checkConfig();
         return static::$instance;
     }

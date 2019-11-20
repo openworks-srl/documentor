@@ -1,4 +1,13 @@
 <?php
+/*
+ * This file is part of the openworks-srl/documentor package.
+ *
+ * (c) Openworks srl <www.openworks.it>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Generator;
 
 use App\TwigEngine;
@@ -19,14 +28,14 @@ class PdfDocumentGenerator extends DefaultDocumentGenerator
         ]));
         $pdf->addPage($template);
         $doc = $this->bunldeDocument("application/pdf");
-        if (PHP_OS == "WINNT") {
+        if (Utils::isWindows()) {
             $pdf->binary = Settings::get("WIN_WK_BINARY");
         } else {
             $pdf->binary = Settings::get("LINUX_WK_BINARY");
         }
 
         if (! $pdf->saveAs($doc->getFile())) {
-            throw new \Exception("Si e' verificato un errore durante la scrittura del file pdf " . $doc->getName() . " ERRORE => " . $pdf->getError());
+            throw new \Exception("Si e' verificato un errore durante la scrittura del file pdf " . $doc->getFile() . " ERRORE => " . $pdf->getError());
         }
         return $doc;
     }
