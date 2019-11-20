@@ -10,10 +10,10 @@ class GeneratorFactory
 
     const classNameSpace = "App\Generator\\";
 
-    public static function getGenerator( $format,  $modifier = null)
+    public static function getGenerator($format, $modifier = null)
     {
         $class = null;
-        switch ($format) {
+        switch (strtolower($format)) {
             case "doc":
             case "docx":
             case "odt":
@@ -46,7 +46,6 @@ class GeneratorFactory
         } catch (Exception $e) {
             throw new \InvalidArgumentException("La tipologia di documento speicifcata non puo essere generata");
         }
-       
     }
 }
 

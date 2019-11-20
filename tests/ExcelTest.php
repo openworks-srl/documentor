@@ -1,11 +1,17 @@
 <?php
 namespace Test\test;
 
-use PHPUnit\Framework\TestCase;
 use App\Documentor;
+use PHPUnit\Framework\TestCase;
 
 final class ExcelTest extends TestCase
 {
+    
+    private $documentor;
+    
+    public function __construct() {
+        $this->documentor = new Documentor(__DIR__."/TestConfig.php");
+    }
     
     public function testGenerateDocument() {
         $foo = [
@@ -23,16 +29,16 @@ final class ExcelTest extends TestCase
                 
             ]
         ];
-        $doc = (new Documentor(__DIR__."/TestConfig.php"))->generate("test.excel.twig", "ods", [
+        $doc =  $this->documentor->generate(["test.excel.twig", [
             "foo" => $foo
-        ]);
+        ]], "ods");
         $this->assertFileExists($doc->getFile());
     }
     
     
     
     public function testGenerateManualBuildedDocument() {
-        $generator = (new Documentor(__DIR__."/TestConfig.php"))->getInteractiveGenerator("xlsx");
+        $generator =  $this->documentor->getInteractiveGenerator("xlsx");
         $obj = $generator->getEditableObject();
         $sheet = $obj->getActiveSheet();
         $sheet->setCellValue('A1', 'Hello World !');
@@ -50,18 +56,18 @@ final class ExcelTest extends TestCase
                 ["Alessandro", "Cibelli", "35"]
             ]
         ];
-        $doc = (new Documentor(__DIR__."/TestConfig.php"))->generate($data, "xlsx", [], ["mod" => "array"]);
+        $doc =  $this->documentor->generate($data, "xlsx", ["mod" => "array"]);
         $this->assertFileExists($doc->getFile());
     }
     
     
     public function testgenerateFromArrayWithoutColoumn() {
-        $data = [
+        $data = [[
                 ["Nome" => "Mattia", "Cognome" => "Bonzi","Età" => "21"],
                 ["Nome" => "Davide", "Cognome" => "manoli","Età" => 21],
                 ["Nome" => "Alessandro", "Cognome" => "Cibelli","Età" => "35"]
-        ];
-        $doc = (new Documentor(__DIR__."/TestConfig.php"))->generate($data, "xlsx", [], ["mod" => "array"]);
+        ]];
+        $doc =  $this->documentor->generate($data, "xlsx", ["mod" => "array"]);
         $this->assertFileExists($doc->getFile());
     }
     
@@ -78,19 +84,19 @@ final class ExcelTest extends TestCase
                 ["Alessandro", "Cibelli", "35"]
             ]
         ];
-        $doc = (new Documentor(__DIR__."/TestConfig.php"))->generate($data, "xlsx", [], $options);
+        $doc =  $this->documentor->generate($data, "xlsx", $options);
         $this->assertFileExists($doc->getFile());
     }
     
     
     public function testgenerateFromArrayWithoutColoumnWithOffset() {
         $options = ["mod" => "array", "doc" => ["headerStartColumn" => "B", "headerStartRow" => 3, "dataStartColumn" => "B"]];
-        $data = [
+        $data = [[
             ["Nome" => "Mattia", "Cognome" => "Bonzi","Età" => "21"],
             ["Nome" => "Davide", "Cognome" => "manoli","Età" => 21],
             ["Nome" => "Alessandro", "Cognome" => "Cibelli","Età" => "35"]
-        ];
-        $doc = (new Documentor(__DIR__."/TestConfig.php"))->generate($data, "xlsx", [], $options);
+        ]];
+        $doc =  $this->documentor->generate($data, "xlsx", $options);
         $this->assertFileExists($doc->getFile());
     }
     
@@ -106,7 +112,7 @@ final class ExcelTest extends TestCase
                 ["Alessandro", "Cibelli", "35"]
             ]
         ];
-        $doc = (new Documentor(__DIR__."/TestConfig.php"))->generate($data, "xlsx", [], $options);
+        $doc =  $this->documentor->generate($data, "xlsx", $options);
         $this->assertFileExists($doc->getFile());
     }
 }

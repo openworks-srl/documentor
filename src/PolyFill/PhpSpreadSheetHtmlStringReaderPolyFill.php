@@ -8,18 +8,19 @@ use Exception;
 
 class PhpSpreadSheetHtmlStringReaderPolyFill extends Html
 {
-    
+
     public function loadFromString($content)
     {
-        //    Create a new DOM object
+        // Create a new DOM object
         $dom = new DOMDocument();
-        //    Reload the HTML file into the DOM object
+        // Reload the HTML file into the DOM object
         $loaded = $dom->loadHTML(mb_convert_encoding($this->securityScanner->scan($content), 'HTML-ENTITIES', 'UTF-8'));
         if ($loaded === false) {
             throw new Exception('Failed to load content as a DOM Document');
         }
         return $this->loadDocument($dom, new Spreadsheet());
     }
+
     /**
      * Loads PhpSpreadsheet from DOMDocument into PhpSpreadsheet instance.
      *
@@ -46,6 +47,5 @@ class PhpSpreadSheetHtmlStringReaderPolyFill extends Html
         // Return
         return $spreadsheet;
     }
-    
 }
 

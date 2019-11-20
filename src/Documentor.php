@@ -3,8 +3,6 @@ namespace App;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use App\TwigEngine;
-use App\Utils;
 use App\Config\Settings;
 
 class Documentor
@@ -15,13 +13,10 @@ class Documentor
         Settings::loadConfig($pathConfig);
     }
 
-    public function generate($input, $format, $data = [], $options = [])
+    public function generate($input, $format, $options = [])
     {
-        if (is_string($input)) {
-            $input = (new TwigEngine())->render($input, $data);
-        }
-        $format = Utils::getOptions($options, "debug", false) ? "debug" : $format;
-        return GeneratorFactory::getGenerator($format, Utils::getOptions($options, "mod", ""))->generate($input, Utils::getOptions($options, "doc", []));
+        $generator = GeneratorFactory::getGenerator(Utils::getOptions($options, "debug", false) ? "debug" : $format, Utils::getOptions($options, "mod", ""));
+        return $generator->generate($generator->mapInput($input), Utils::getOptions($options, "doc", []));
     }
 
     public function getInteractiveGenerator($format, $modifier = "_interactive")

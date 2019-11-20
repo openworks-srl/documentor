@@ -6,8 +6,16 @@ use App\Documentor;
 
 final class WordTest extends TestCase
 {
-    
-    public function testGenerateSimpleDocument() {
+
+    private $documentor;
+
+    public function __construct()
+    {
+        $this->documentor = new Documentor(__DIR__ . "/TestConfig.php");
+    }
+
+    public function testGenerateSimpleDocument()
+    {
         $foo = [
             [
                 'name' => 'Alice'
@@ -19,16 +27,18 @@ final class WordTest extends TestCase
                 'name' => 'Eve'
             ]
         ];
-        $doc = (new Documentor(__DIR__."/TestConfig.php"))->generate("test.doc.twig", "docx", [
+        $doc = $this->documentor->generate(["test.doc.twig", [
             "foo" => $foo
-        ]);
-       
-       $this->assertFileExists($doc->getFile());
+        ]], "docx");
+
+        $this->assertFileExists($doc->getFile());
     }
+
     
     
     
-    public function testegistroPartecipazione() {
+    public function testegistroPartecipazione()
+    {
         $foo = [
             [
                 'name' => 'Alice',
@@ -49,12 +59,46 @@ final class WordTest extends TestCase
                 'id' => 'A3'
             ]
         ];
-        $doc = (new Documentor(__DIR__."/TestConfig.php"))->generate("registroPartecipazione.doc.twig", "docx", [
+        $doc = $this->documentor->generate(["registroPartecipazione.doc.twig" , [
             "users" => $foo
-        ], ["doc" => ["style" => ["orientation" => "landscape"]]]);
-        
+        ]], "docx", [
+            "doc" => [
+                "template" => "registroPartecipazioneTemplatePart1.docx",
+                "templateSamePage" => true,
+                "style" => [
+                    "orientation" => "landscape"
+                ]
+            ]
+        ]);
+
+        $this->assertFileExists($doc->getFile());
+    }
+
+    public function testManualGeneration()
+    {
+        $generator = $this->documentor->getInteractiveGenerator("docx");
+        $word = $generator->getEditableObject();
+        $section = $word->addSection();
+        $section->addText('"Great achievement is usually born of great sacrifice, ' . 'and is never the result of selfishness." ' . '(Napoleon Hill)', array(
+            'name' => 'Tahoma',
+            'size' => 10
+        ));
+        $doc = $generator->save($word);
         $this->assertFileExists($doc->getFile());
     }
     
     
+    
+    
+    public function testGenerateFromDocTemplate()
+    {
+        $data = [
+            "firstname" => "mario",
+            "lastname" => "rossi",
+            "adress" => "Via garofalo 31"
+        ];
+        $doc = $this->documentor->generate(["cv.docx", $data], "docx", ["mod" => "template"]);
+        
+        $this->assertFileExists($doc->getFile());
+    }
 }

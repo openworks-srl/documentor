@@ -1,0 +1,28 @@
+<?php
+namespace App\Generator;
+
+use App\Utils;
+use PhpOffice\PhpWord\TemplateProcessor;
+
+class WordTemplateDocumentGenerator extends DefaultDocumentGenerator
+{
+
+    public function generate($input, $options = [])
+    {
+        $templateProcessor = new TemplateProcessor(Utils::findFile($input["template"]));
+        $templateProcessor->setValues($input["data"]);
+        $doc = $this->bunldeDocument();
+        $templateProcessor->saveAs($doc->getFile());
+        return $doc;
+    }
+
+    public function mapInput($input)
+    {
+        $this->validateInput($input, 2);
+        return Utils::mapArray($input, [
+            "template" => 0,
+            "data" => 1
+        ]);
+    }
+}
+
