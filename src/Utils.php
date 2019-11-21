@@ -7,9 +7,9 @@
  * For the full license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace App;
 
+// Per generare documentazione => php vendor\phpdocumentor\phpdocumentor\bin\phpdoc -d ./src -t./docs/generated
 use App\Config\Settings;
 use Exception;
 
@@ -66,15 +66,15 @@ class Utils
         }
         return $input;
     }
-    
-    
-    public static function isWindows() {
+
+    public static function isWindows()
+    {
         return PHP_OS == "WINNT";
     }
-    
-    public static function isHtml($string) {
+
+    public static function isHtml($string)
+    {
         return $string != strip_tags($string);
     }
-    
 }
 

@@ -7,7 +7,6 @@
  * For the full license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace App\Generator;
 
 use App\Utils;
@@ -17,20 +16,17 @@ use PhpOffice\PhpWord\IOFactory;
 class PdfWordTemplateDocumentGenerator extends DefaultDocumentGenerator
 {
 
-    
-    
-    
     public function generate($input, $options = [])
     {
         $wordTemplateGenerator = new WordTemplateDocumentGenerator("docx");
         $pdfPrinter = new PdfPrintDocumentGenerator("pdf");
         $doc = $wordTemplateGenerator->generate($wordTemplateGenerator->mapInput($input));
-        $pdf = $pdfPrinter->generate($pdfPrinter->mapInput([$doc->getFile()]));
+        $pdf = $pdfPrinter->generate($pdfPrinter->mapInput([
+            $doc->getFile()
+        ]));
         unlink($doc->getFile());
         return $pdf;
-        
     }
-    
 
     public function mapInput($input)
     {

@@ -7,7 +7,6 @@
  * For the full license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace App;
 
 use function App\Document\cleanUp;
@@ -30,12 +29,12 @@ class Document
         if ($name == null) {
             $name = $this->name;
         }
-        if (!file_exists($path)) {
+        if (! file_exists($path)) {
             throw new \Exception("Impossibile trovare il percorso di destinazione specificato");
         }
-        $completePath = $path.$name.'.'.$this->format;
+        $completePath = $path . $name . '.' . $this->format;
         if ($this->file != null && file_exists($this->file)) {
-            if (($override && file_exists($completePath)) || !file_exists($completePath)) {
+            if (($override && file_exists($completePath)) || ! file_exists($completePath)) {
                 copy($this->file, $completePath);
                 $this->cleanUp();
                 return $path;
@@ -120,8 +119,9 @@ class Document
         $this->lenght = $lenght;
         return $this;
     }
-    
-    public function getFullName() {
+
+    public function getFullName()
+    {
         return $this->name . "." . $this->format;
     }
 }

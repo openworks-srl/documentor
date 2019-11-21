@@ -1,14 +1,33 @@
 <?php
-namespace App\generator;
+/*
+ * This file is part of the openworks-srl/documentor package.
+ *
+ * (c) Openworks srl <www.openworks.it>
+ *
+ * For the full license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-use App\Document;
-use App\Constant;
+namespace App\Generator;
+
 
 abstract class DefaultDocumentGenerator extends AbstractDocumentGenerator
 {
 
-    public abstract function generate($template, $options = []);
-   
+    public abstract function generate($input, $options = []);
+
+    public function validateInput($input, $number)
+    {
+        if (count($input) < $number) {
+            throw new \Exception("L'input fornito non è valido");
+        }
+        return true;
+    }
+
+    public function mapInput($input)
+    {
+        return $input;
+    }
 }
 
 

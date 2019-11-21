@@ -7,23 +7,13 @@
  * For the full license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
-namespace Test\test;
+namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 use App\Documentor;
 
-final class PdfTest extends TestCase
+final class PdfTest extends BaseTestCase
 {
-
-    private $documentor;
-
-    const TEST_OUT = "C:\Progetti\documentorTest\\";
-
-    public function __construct()
-    {
-        $this->documentor = new Documentor(__DIR__ . "/TestConfig.php");
-    }
 
     public function testGenerateSimpleDocument()
     {
@@ -52,7 +42,7 @@ final class PdfTest extends TestCase
             ]
         ]);
 
-        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Pdf_" . "testGenerateSimpleDocument_" . $doc->getName()));
+        $this->assertFileExists($doc->saveAs($this->TEST_OUT, "Pdf_" . "testGenerateSimpleDocument_" . $doc->getName()));
     }
 
     public function testGenerateFromDocTemplate()
@@ -69,45 +59,28 @@ final class PdfTest extends TestCase
             "mod" => "wordTemplate"
         ]);
 
-        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Pdf_" . "testGenerateFromDocTemplate_" . $doc->getName()));
-    }
-
-    public function testGenerateFromDocTemplate2()
-    {
-        $data = [
-            "firstname" => "mario",
-            "lastname" => "rossi",
-            "adress" => "Via garofalo 31"
-        ];
-        $doc = $this->documentor->generate([
-            "testdocpdf.docx",
-            $data
-        ], "pdf", [
-            "mod" => "wordTemplate"
-        ]);
-
-        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Pdf_" . "testGenerateFromDocTemplate2_" . $doc->getName()));
+        $this->assertFileExists($doc->saveAs($this->TEST_OUT, "Pdf_" . "testGenerateFromDocTemplate_" . $doc->getName()));
     }
 
     public function testGenerateFromPrintWord()
     {
         $doc = $this->documentor->generate([
-            "Ordinamaneto_automatico_corsi.docx"
+            "file-sample_500kB.docx"
         ], "pdf", [
             "mod" => "print"
         ]);
 
-        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Pdf_" . "testGenerateFromPrintWord_" . $doc->getName()));
+        $this->assertFileExists($doc->saveAs($this->TEST_OUT, "Pdf_" . "testGenerateFromPrintWord_" . $doc->getName()));
     }
 
     public function testGenerateFromPrintExcel()
     {
         $doc = $this->documentor->generate([
-            "templateTest.xlsx"
+            "Financial_Sample.xlsx"
         ], "pdf", [
             "mod" => "print"
         ]);
 
-        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Pdf_" . "testGenerateFromPrintExcel_" . $doc->getName()));
+        $this->assertFileExists($doc->saveAs($this->TEST_OUT, "Pdf_" . "testGenerateFromPrintExcel_" . $doc->getName()));
     }
 }

@@ -7,22 +7,13 @@
  * For the full license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
-namespace Test\test;
+namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 use App\Documentor;
 
-final class WordTest extends TestCase
+final class WordTest extends BaseTestCase
 {
-
-    private $documentor;
-    CONST TEST_OUT = "C:\Progetti\documentorTest\\";
-
-    public function __construct()
-    {
-        $this->documentor = new Documentor(__DIR__."/TestConfig.php");
-    }
 
     public function testGenerateSimpleDocument()
     {
@@ -37,16 +28,16 @@ final class WordTest extends TestCase
                 'name' => 'Eve'
             ]
         ];
-        $doc = $this->documentor->generate(["test.doc.twig", [
-            "foo" => $foo
-        ]], "docx");
+        $doc = $this->documentor->generate([
+            "test.doc.twig",
+            [
+                "foo" => $foo
+            ]
+        ], "docx");
 
-        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Word_"."testGenerateSimpleDocument".$doc->getName()));
+        $this->assertFileExists($doc->saveAs($this->TEST_OUT, "Word_" . "testGenerateSimpleDocument" . $doc->getName()));
     }
 
-    
-    
-    
     public function testegistroPartecipazione()
     {
         $foo = [
@@ -69,11 +60,14 @@ final class WordTest extends TestCase
                 'id' => 'A3'
             ]
         ];
-        $doc = $this->documentor->generate(["registroPartecipazione.doc.twig" , [
-            "users" => $foo
-        ]], "docx", [
+        $doc = $this->documentor->generate([
+            "testMultipart.twig",
+            [
+                "users" => $foo
+            ]
+        ], "docx", [
             "doc" => [
-                "template" => "registroPartecipazioneTemplatePart1.docx",
+                "template" => "testMultipart.docx",
                 "templateSamePage" => true,
                 "style" => [
                     "orientation" => "landscape"
@@ -81,8 +75,7 @@ final class WordTest extends TestCase
             ]
         ]);
 
-        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Word_"."testegistroPartecipazione".$doc->getName()));
-        
+        $this->assertFileExists($doc->saveAs($this->TEST_OUT, "Word_" . "testegistroPartecipazione" . $doc->getName()));
     }
 
     public function testManualGeneration()
@@ -95,12 +88,9 @@ final class WordTest extends TestCase
             'size' => 10
         ));
         $doc = $generator->save($word);
-        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Word_"."testManualGeneration".$doc->getName()));
+        $this->assertFileExists($doc->saveAs($this->TEST_OUT, "Word_" . "testManualGeneration" . $doc->getName()));
     }
-    
-    
-    
-    
+
     public function testGenerateFromDocTemplate()
     {
         $data = [
@@ -108,8 +98,13 @@ final class WordTest extends TestCase
             "lastname" => "rossi",
             "adress" => "Via garofalo 31"
         ];
-        $doc = $this->documentor->generate(["cv.docx", $data], "docx", ["mod" => "template"]);
-        
-        $this->assertFileExists($doc->saveAs(static::TEST_OUT, "Word_"."testGenerateFromDocTemplate".$doc->getName()));
+        $doc = $this->documentor->generate([
+            "cv.docx",
+            $data
+        ], "docx", [
+            "mod" => "template"
+        ]);
+
+        $this->assertFileExists($doc->saveAs($this->TEST_OUT, "Word_" . "testGenerateFromDocTemplate" . $doc->getName()));
     }
 }
