@@ -19,7 +19,7 @@
 		"phpdocumentor/phpdocumentor" : "2.9.0"
 		
 	},
-	"license" : "Propietary",
+	"license" : "Apache-2.0",
 	"authors" : [{
 			"name" : "Mattia Bonzi",
 			"email" : "mattiabonzi@openworks.it"
