@@ -1,6 +1,6 @@
 {
 	"name" : "openworks-srl/documentor",
-	"description" : "Generatore di documenti a partire da template twig",
+	"description" : "PHP5 lib to dynamically generate office document, starting from html page, twig template, data array, word template and more. Based on several popular open-source software.",
 	"type" : "library",
 	"require" : {
 		"php": "5.4 - 5.6",
@@ -9,9 +9,7 @@
 		"phpoffice/phpword" : "^0.17.0",
 		"phpoffice/phpspreadsheet" : "1.8.2",
 		"mikehaertl/phpwkhtmltopdf" : "^2.4",
-		"doctrine/instantiator" : "1.0.5",
-		"northwoods/config" : "1.1.0",
-		"josegonzalez/dotenv": "dev-master"
+		"doctrine/instantiator" : "1.0.5"
 	},
 	"require-dev" : {
 		"phpunit/phpunit" : "^5",
