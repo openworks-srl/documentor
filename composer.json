@@ -20,7 +20,8 @@
 	"license" : "Apache-2.0",
 	"authors" : [{
 			"name" : "Mattia Bonzi",
-			"email" : "mattiabonzi@openworks.it"
+			"email" : "mattiabonzi@openworks.it",
+			"homepage": "mattiabonzi.it"
 		}
 	],
 	"autoload" : {
