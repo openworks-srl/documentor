@@ -18,7 +18,7 @@
  * limitations under the License.
  * 
  */
-namespace App\PolyFill;
+namespace Openworks\Documentor\PolyFill;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Reader\Html;

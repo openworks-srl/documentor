@@ -18,11 +18,11 @@
  * limitations under the License.
  * 
  */
-namespace App;
+namespace Openworks\Documentor;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use App\Config\Settings;
+use Openworks\Documentor\Config\Settings;
 use Exception;
 
 /**

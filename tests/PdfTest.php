@@ -18,10 +18,10 @@
  * limitations under the License.
  * 
  */
-namespace Tests;
+namespace Openworks\Documentor\Tests;
 
 use PHPUnit\Framework\TestCase;
-use App\Documentor;
+use Openworks\Documentor\Documentor;
 
 final class PdfTest extends BaseTestCase
 {

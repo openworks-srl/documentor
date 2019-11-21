@@ -18,10 +18,10 @@
  * limitations under the License.
  * 
  */
-namespace App;
+namespace Openworks\Documentor;
 
 // Per generare documentazione => php vendor\phpdocumentor\phpdocumentor\bin\phpdoc -d ./src -t./docs/generated
-use App\Config\Settings;
+use Openworks\Documentor\Config\Settings;
 use Exception;
 
 class Utils

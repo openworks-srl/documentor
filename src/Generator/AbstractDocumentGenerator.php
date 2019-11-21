@@ -18,10 +18,10 @@
  * limitations under the License.
  * 
  */
-namespace App\Generator;
+namespace Openworks\Documentor\Generator;
 
-use App\Document;
-use App\Config\Settings;
+use Openworks\Documentor\Document;
+use Openworks\Documentor\Config\Settings;
 
 /**
  * Classe "generatore" base, viene estesa da tutti i generatori
@@ -64,7 +64,7 @@ abstract class AbstractDocumentGenerator
      *            Stringa di MIME per trasmisssione su HTTP, se non viene fornita indicazione e' usato <code>application/octet-stream</code>
      * @param int $lenght
      *            Dimensione (in byte) del documento
-     * @return \App\Document Classe wrapper per un documento da generare
+     * @return Document Classe wrapper per un documento da generare
      */
     protected function bunldeDocument($contentType = "application/octet-stream", $lenght = null)
     {

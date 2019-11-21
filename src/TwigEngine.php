@@ -18,9 +18,9 @@
  * limitations under the License.
  * 
  */
-namespace App;
+namespace Openworks\Documentor;
 
-use App\Config\Settings;
+use Openworks\Documentor\Config\Settings;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 

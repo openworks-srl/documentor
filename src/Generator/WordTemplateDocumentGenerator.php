@@ -18,9 +18,9 @@
  * limitations under the License.
  * 
  */
-namespace App\Generator;
+namespace Openworks\Documentor\Generator;
 
-use App\Utils;
+use Openworks\Documentor\Utils;
 use PhpOffice\PhpWord\TemplateProcessor;
 
 class WordTemplateDocumentGenerator extends DefaultDocumentGenerator

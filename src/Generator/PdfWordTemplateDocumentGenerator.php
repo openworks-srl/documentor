@@ -18,10 +18,10 @@
  * limitations under the License.
  * 
  */
-namespace App\Generator;
+namespace Openworks\Documentor\Generator;
 
-use App\Utils;
-use App\Config\Settings;
+use Openworks\Documentor\Utils;
+use Openworks\Documentor\Config\Settings;
 use PhpOffice\PhpWord\IOFactory;
 
 class PdfWordTemplateDocumentGenerator extends DefaultDocumentGenerator

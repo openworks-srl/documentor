@@ -18,7 +18,7 @@
  * limitations under the License.
  * 
  */
-namespace App\Generator;
+namespace Openworks\Documentor\Generator;
 
 abstract class InteractiveDocumentGenerator extends AbstractDocumentGenerator
 {

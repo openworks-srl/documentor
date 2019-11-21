@@ -18,9 +18,9 @@
  * limitations under the License.
  * 
  */
-namespace Tests;
+namespace Openworks\Documentor\Tests;
 
-use App\Documentor;
+use Openworks\Documentor\Documentor;
 use PHPUnit\Framework\TestCase;
 
 final class ExcelTest extends BaseTestCase

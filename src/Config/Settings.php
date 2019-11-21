@@ -18,7 +18,7 @@
  * limitations under the License.
  * 
  */
-namespace App\Config;
+namespace Openworks\Documentor\Config;
 
 /**
  * Classe responsabile del caricamento e accesso alle configurazioni

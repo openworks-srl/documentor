@@ -18,7 +18,7 @@
  * limitations under the License.
  * 
  */
-namespace App;
+namespace Openworks\Documentor;
 
 use function App\Document\cleanUp;
 

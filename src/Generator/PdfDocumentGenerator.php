@@ -18,11 +18,11 @@
  * limitations under the License.
  * 
  */
-namespace App\Generator;
+namespace Openworks\Documentor\Generator;
 
-use App\TwigEngine;
-use App\Utils;
-use App\Config\Settings;
+use Openworks\Documentor\TwigEngine;
+use Openworks\Documentor\Utils;
+use Openworks\Documentor\Config\Settings;
 use mikehaertl\wkhtmlto\Pdf;
 
 class PdfDocumentGenerator extends DefaultDocumentGenerator

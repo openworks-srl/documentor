@@ -18,10 +18,10 @@
  * limitations under the License.
  * 
  */
-namespace App\Generator;
+namespace Openworks\Documentor\Generator;
 
-use App\TwigEngine;
-use App\Utils;
+use Openworks\Documentor\TwigEngine;
+use Openworks\Documentor\Utils;
 use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Shared\Html;

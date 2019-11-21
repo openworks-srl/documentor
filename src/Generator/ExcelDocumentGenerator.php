@@ -18,11 +18,11 @@
  * limitations under the License.
  * 
  */
-namespace App\Generator;
+namespace Openworks\Documentor\Generator;
 
-use App\TwigEngine;
-use App\Utils;
-use App\PolyFill\PhpSpreadSheetHtmlStringReaderPolyFill as HtmlReader;
+use Openworks\Documentor\TwigEngine;
+use Openworks\Documentor\Utils;
+use Openworks\Documentor\PolyFill\PhpSpreadSheetHtmlStringReaderPolyFill as HtmlReader;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class ExcelDocumentGenerator extends DefaultDocumentGenerator

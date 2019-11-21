@@ -18,7 +18,7 @@
  * limitations under the License.
  * 
  */
-namespace App;
+namespace Openworks\Documentor;
 
 use Exception;
 
@@ -27,7 +27,7 @@ class GeneratorFactory
 
     const classPostfix = "DocumentGenerator";
 
-    const classNameSpace = "App\Generator\\";
+    const classNameSpace = __NAMESPACE__ . "\Generator\\";
 
     public static function getGenerator($format, $modifier = null)
     {
