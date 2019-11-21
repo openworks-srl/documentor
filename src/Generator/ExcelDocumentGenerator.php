@@ -32,7 +32,7 @@ class ExcelDocumentGenerator extends DefaultDocumentGenerator
     {
         $template = Utils::getOptions($options, "renderTemplate", true) ? (new TwigEngine())->render($input["html"], $input["data"]) : file_get_contents($input["html"]);
         $spreadSheet = (new HtmlReader())->loadFromString($template);
-        $doc = $this->bunldeDocument();
+        $doc = $this->bundleDocument("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
         IOFactory::createWriter($spreadSheet, ucfirst($this->format))->save($doc->getFile());
         return $doc;
     }

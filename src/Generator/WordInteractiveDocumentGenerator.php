@@ -48,7 +48,7 @@ class WordInteractiveDocumentGenerator extends InteractiveDocumentGenerator
         if (! ($object instanceof PhpWord)) {
             throw new \Exception("L'oggeto passato non e' una istanza di PhpWord");
         }
-        $doc = $this->bunldeDocument();
+        $doc = $this->bundleDocument("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
         IOFactory::createWriter($object, $this->format == "odt" ? "ODText" : "Word2007")->save($doc->getFile());
         return $doc;
     }

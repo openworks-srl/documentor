@@ -37,7 +37,7 @@ class PdfDocumentGenerator extends DefaultDocumentGenerator
             ]
         ]));
         $pdf->addPage($template);
-        $doc = $this->bunldeDocument("application/pdf");
+        $doc = $this->bundleDocument("application/pdf");
         if (Utils::isWindows()) {
             $pdf->binary = Settings::get("WIN_WK_BINARY");
         } else {

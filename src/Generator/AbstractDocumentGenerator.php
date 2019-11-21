@@ -66,7 +66,7 @@ abstract class AbstractDocumentGenerator
      *            Dimensione (in byte) del documento
      * @return Document Classe wrapper per un documento da generare
      */
-    protected function bunldeDocument($contentType = "application/octet-stream", $lenght = null)
+    protected function bundleDocument($contentType = "application/octet-stream", $lenght = null)
     {
         $name = $this->getTmpName();
         return (new Document())->setName($name)

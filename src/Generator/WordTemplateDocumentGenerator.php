@@ -30,7 +30,7 @@ class WordTemplateDocumentGenerator extends DefaultDocumentGenerator
     {
         $templateProcessor = new TemplateProcessor(Utils::findFile($input["template"]));
         $templateProcessor->setValues($input["data"]);
-        $doc = $this->bunldeDocument();
+        $doc = $this->bundleDocument("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
         $templateProcessor->saveAs($doc->getFile());
         return $doc;
     }

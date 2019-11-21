@@ -43,7 +43,7 @@ class PdfPrintDocumentGenerator extends DefaultDocumentGenerator
         if (! Utils::isWindows()) {
             unlink($tmpDir);
         }
-        return $this->bunldeDocument()->setFile($newName);
+        return $this->bundleDocument("application/pdf")->setFile($newName);
     }
 
     public function mapInput($input)

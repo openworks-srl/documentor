@@ -20,7 +20,6 @@
  */
 namespace Openworks\Documentor;
 
-require_once __DIR__ . '/../vendor/autoload.php';
 
 use Openworks\Documentor\Config\Settings;
 use Exception;

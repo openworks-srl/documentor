@@ -33,7 +33,7 @@ class DebugDocumentGenerator extends DefaultDocumentGenerator
 
     public function generate($input, $options = [])
     {
-        $doc = $this->bunldeDocument("application/html");
+        $doc = $this->bundleDocument("application/html");
         $handle = fopen($doc->getFile(), "w");
         if (Utils::isHtml($input)) {
             fwrite($handle, $input);

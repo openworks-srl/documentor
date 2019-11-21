@@ -52,7 +52,7 @@ class WordDocumentGenerator extends DefaultDocumentGenerator
         }
 
         Html::addHtml($section, $template);
-        $doc = $this->bunldeDocument();
+        $doc = $this->bundleDocument("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
         IOFactory::createWriter($word, Utils::getWordWriterName($this->format))->save($doc->getFile());
         return $doc;
     }

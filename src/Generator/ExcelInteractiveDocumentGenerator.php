@@ -42,13 +42,15 @@ class ExcelInteractiveDocumentGenerator extends InteractiveDocumentGenerator
         }
         return new Spreadsheet();
     }
+    
+    
 
     public function save($object, ...$params)
     {
         if (! ($object instanceof Spreadsheet)) {
             throw new \Exception("L'oggeto passato non e' una istanza di Spreadsheet");
         }
-        $doc = $this->bunldeDocument();
+        $doc = $this->bundleDocument("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
         IOFactory::createWriter($object, ucfirst($this->format))->save($doc->getFile());
         return $doc;
     }

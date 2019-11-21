@@ -58,6 +58,10 @@ class Utils
 
     public static function mapArray($input, $map)
     {
+        
+        if (!is_array($input)) {
+            throw new \Exception('Il paramtro $input passato deve essere un Array');
+        }
         foreach ($map as $key => $index) {
             $default = null;
             if (is_array($index)) {

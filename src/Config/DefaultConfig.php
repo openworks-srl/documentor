@@ -20,7 +20,7 @@
  */
 $BINARY_DIR = __DIR__ . "/../../lib";
 return [
-    "TEMPLATE_DIR" => __DIR__ . "/../../../DocumentTemplate",
+    "TEMPLATE_DIR" => __DIR__ . "/../../../../../DocumentTemplate",
     "TMP_DIR" => sys_get_temp_dir() . "/documentor",
     "LINUX_WK_BINARY" => $BINARY_DIR . "/unix/wkhtmltopdf",
     "WIN_WK_BINARY" => $BINARY_DIR . "/win/bin/wkhtmltopdf",

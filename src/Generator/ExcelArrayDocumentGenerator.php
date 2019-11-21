@@ -71,7 +71,7 @@ class ExcelArrayDocumentGenerator extends DefaultDocumentGenerator
             $row ++;
             $column = Utils::getOptions($options, "dataStartColumn", "A");
         }
-        $doc = $this->bunldeDocument();
+        $doc = $this->bundleDocument(bunldeDocument);
         IOFactory::createWriter($spreadsheet, ucfirst($this->format))->save($doc->getFile());
         return $doc;
     }
