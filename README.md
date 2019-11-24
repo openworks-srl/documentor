@@ -34,9 +34,9 @@ More deatil on how to use each mode below this section.
 - A Word template (.doc, .docx) (data can be passed to be filled in the template)
 
 
-## How con i use this library?
+## How can i use this library?
 > Coming soon...
 ## How this works internaly?
 > Coming soon...
-## How con i contribuite to this library?
+## How can i contribuite to this library?
 > Coming soon...
