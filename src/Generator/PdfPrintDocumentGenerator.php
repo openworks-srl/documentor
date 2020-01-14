@@ -29,7 +29,7 @@ class PdfPrintDocumentGenerator extends DefaultDocumentGenerator
 
     public function generate($input, $options = [])
     {
-        $binaryName = (Utils::isWindows() ? "WIN" : "UNIX") . "_SOFFICE_BINARY";
+        $binaryName = (Utils::isWindows() ? "WIN" : (Utils::isMac() ? "MAC" : "UNIX")) . "_SOFFICE_BINARY";
         $tmpname = $this->getTmpName();
         $tmpDir = Settings::get("TMP_DIR") . "/" . $tmpname;
         $fileInfo = pathinfo($input["file"]);

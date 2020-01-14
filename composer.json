@@ -21,7 +21,7 @@
 	"authors" : [{
 			"name" : "Mattia Bonzi",
 			"email" : "mattiabonzi@openworks.it",
-			"homepage": "mattiabonzi.it"
+			"homepage": "http://mattiabonzi.it"
 		}
 	],
 	"autoload" : {

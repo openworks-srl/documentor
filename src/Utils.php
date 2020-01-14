@@ -84,9 +84,21 @@ class Utils
 
     public static function isWindows()
     {
-        return PHP_OS == "WINNT";
+        return strtolower(PHP_OS) == "winnt";
     }
 
+    public static function isMac()
+    {
+        return strtolower(PHP_OS) == "darwin";
+    }
+    
+    public static function isUnix()
+    {
+        return !self::isMac() && !self::isWindows();
+    }
+    
+    
+    
     public static function isHtml($string)
     {
         return $string != strip_tags($string);
