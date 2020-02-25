@@ -70,7 +70,7 @@ class Document
             header('Content-disposition: filename="' . $name . "." .  $this->format . '"');
             header('Content-Length', $this->lenght);
             readfile($this->file);
-            cleanUp();
+            $this->cleanUp();
         } else {
             throw new \Exception("E' possibile inviare il file una sola volta");
         }
