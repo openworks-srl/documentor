@@ -31,13 +31,12 @@ class ExcelArrayDocumentGenerator extends DefaultDocumentGenerator
     public function generate($input, $options = [])
     {
         $data = $input["data"];
-        if (array_key_exists("column", $data)) {
+        if (array_key_exists("column", $input)) {
             $columns = $input["column"];
         } else {
             $columns = $this->findColumnName($data);
         }
-
-        // Controllo se è necessario caricare un template
+        // Controllo se ï¿½ necessario caricare un template
         $file = Utils::getOptions($options, "template");
         if ($file != null) {
             try {
@@ -71,7 +70,7 @@ class ExcelArrayDocumentGenerator extends DefaultDocumentGenerator
             $row ++;
             $column = Utils::getOptions($options, "dataStartColumn", "A");
         }
-        $doc = $this->bundleDocument(bunldeDocument);
+        $doc = $this->bundleDocument();
         IOFactory::createWriter($spreadsheet, ucfirst($this->format))->save($doc->getFile());
         return $doc;
     }
