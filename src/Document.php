@@ -68,7 +68,7 @@ class Document
         if ($this->file != null && file_exists($this->file)) {
             header("Content-Type: " . $this->contentType);
             header('Content-disposition: filename="' . $name . "." .  $this->format . '"');
-            header('Content-Length', $this->lenght);
+            header('Content-Length: ' . $this->lenght);
             readfile($this->file);
             $this->cleanUp();
         } else {

@@ -24,7 +24,7 @@ return [
     "TMP_DIR" => sys_get_temp_dir() . "/documentor",
     "LINUX_WK_BINARY" => $BINARY_DIR . "/unix/wkhtmltopdf",
     "WIN_WK_BINARY" => $BINARY_DIR . "/win/bin/wkhtmltopdf",
-    "UNIX_SOFFICE_BINARY" => "soffice",
+    "UNIX_SOFFICE_BINARY" => "sudo soffice",
     "MAC_SOFFICE_BINARY" => "/Applications/OpenOffice.app/Contents/MacOS/soffice",
     "WIN_SOFFICE_BINARY" => "\"C:\Program Files\LibreOffice\program\soffice.exe\""
 ];
