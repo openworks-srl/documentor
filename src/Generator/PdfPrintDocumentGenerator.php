@@ -41,7 +41,7 @@ class PdfPrintDocumentGenerator extends DefaultDocumentGenerator
         $newName = $tmpDir . ".pdf";
         rename($oldName, $newName);
         if (! Utils::isWindows()) {
-            unlink($tmpDir);
+            rmdir($tmpDir);
         }
         return $this->bundleDocument("application/pdf")->setFile($newName);
     }
