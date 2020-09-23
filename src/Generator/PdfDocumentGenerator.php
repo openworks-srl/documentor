@@ -30,7 +30,7 @@ class PdfDocumentGenerator extends DefaultDocumentGenerator
 
     public function generate($input, $options = [])
     {
-        $template = Utils::getOptions($options, "renderTemplate", true) ? (new TwigEngine())->render($input["html"], $input["data"]) : file_get_contents($input["html"]);
+        $template = Utils::getOptions($options, "renderTemplate", true) ? (new TwigEngine())->render($input["html"], $input["data"]) : @file_exists($input["html"]) ? file_get_contents($input["html"]) :  $input["html"];
         $pdf = new Pdf(array_merge(Utils::getOptions($options, "renderer", []), [
             'commandOptions' => [
                 'useExec' => true
